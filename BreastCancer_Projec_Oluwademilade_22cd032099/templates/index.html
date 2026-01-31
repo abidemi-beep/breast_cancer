@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="container">
+        <h1>Breast Cancer Prediction</h1>
+        <p class="subtitle">Enter tumor measurements to predict diagnosis.</p>
+        
+        <form method="POST" action="/">
+            <div class="input-group">
+                <div class="input-field">
+                    <label for="radius_mean">Radius Mean</label>
+                    <input type="number" step="any" name="radius_mean" id="radius_mean" required placeholder="e.g. 14.0">
+                </div>
+                <div class="input-field">
+                    <label for="texture_mean">Texture Mean</label>
+                    <input type="number" step="any" name="texture_mean" id="texture_mean" required placeholder="e.g. 20.5">
+                </div>
+                <div class="input-field">
+                    <label for="perimeter_mean">Perimeter Mean</label>
+                    <input type="number" step="any" name="perimeter_mean" id="perimeter_mean" required placeholder="e.g. 90.0">
+                </div>
+                <div class="input-field">
+                    <label for="area_mean">Area Mean</label>
+                    <input type="number" step="any" name="area_mean" id="area_mean" required placeholder="e.g. 600.0">
+                </div>
+                <div class="input-field">
+                    <label for="smoothness_mean">Smoothness Mean</label>
+                    <input type="number" step="any" name="smoothness_mean" id="smoothness_mean" required placeholder="e.g. 0.09">
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Predict Diagnosis</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result {{ 'result-malignant' if prediction == 'Malignant' else 'result-benign' }}">
+            <h2>Prediction Result</h2>
+            <p class="diagnosis">{{ prediction }}</p>
+            <p class="note">Please note: This is a machine learning prediction for educational purposes and not a medical diagnosis.</p>
+        </div>
+        {% endif %}
+        
+        {% if error %}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

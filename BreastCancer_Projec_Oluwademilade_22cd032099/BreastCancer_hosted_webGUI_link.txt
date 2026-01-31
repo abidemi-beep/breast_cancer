@@ -1,0 +1,6 @@
+Name: Abina Oluwademilade
+Matric Number: 22CD032099
+Machine Learning Algorithm Used: Logistic Regression
+Model Persistence Method Used: Joblib
+Live URL of the hosted application: https://breast-cancer-prediction-o9g8.onrender.com
+GitHub Repository Link: https://github.com/DMG-01/breast_cancer_prediction
